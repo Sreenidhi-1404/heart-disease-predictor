@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: linear-gradient(to right, #4facfe, #00f2fe);
+            text-align: center;
+        }
+
+        .card {
+            background: white;
+            margin: 20px auto;
+            padding: 20px;
+            width: 60%;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div style="background:#333;color:white;padding:10px;">
+    Dashboard
+    <button onclick="goHome()" style="float:right;">Home</button>
+</div>
+
+<h1>📊 Patient Dashboard</h1>
+
+<div class="card">
+    <button onclick="loadStats()">Load Stats</button>
+    <div id="stats"></div>
+</div>
+
+<div class="card">
+    <button onclick="loadChart()">Show Chart</button>
+    <img id="chartImg" width="300">
+</div>
+
+<script>
+function goHome(){
+    window.location.href = "index.html";
+}
+
+async function loadStats() {
+    let res = await fetch("http://127.0.0.1:5000/data");
+    let data = await res.json();
+
+    let total = data.length;
+    let risk = data.filter(d => d.result == 1).length;
+
+    document.getElementById("stats").innerHTML =
+        `<h3>Total Patients: ${total}</h3>
+         <h3>At Risk: ${risk}</h3>`;
+}
+
+async function loadChart() {
+    document.getElementById("chartImg").src =
+        "http://127.0.0.1:5000/chart";
+}
+</script>
+
+</body>
+</html>

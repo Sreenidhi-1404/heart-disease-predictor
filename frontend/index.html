@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Heart System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>❤️ Heart Disease Predictor</h1>
+    <p class="subtitle">AI-Based Patient Risk Analysis</p>
+
+    <!-- SEARCH -->
+    <div class="card">
+        <h2>🔍 Search Patient</h2>
+
+        <input id="searchBox" placeholder="Enter Patient ID or Age" onkeyup="searchPatient()">
+
+        <select id="patientList" onchange="fillPatient()">
+            <option>Select Patient</option>
+        </select>
+    </div>
+
+    <!-- INPUT FORM -->
+    <div class="card">
+        <h2>📋 Patient Details</h2>
+
+        <div class="grid">
+            <input id="age" placeholder="Age">
+            <input id="sex" placeholder="Sex">
+            <input id="cp" placeholder="Chest Pain">
+            <input id="trestbps" placeholder="Blood Pressure">
+            <input id="chol" placeholder="Cholesterol">
+            <input id="fbs" placeholder="FBS">
+            <input id="restecg" placeholder="ECG">
+            <input id="thalach" placeholder="Heart Rate">
+            <input id="exang" placeholder="Angina">
+            <input id="oldpeak" placeholder="Oldpeak">
+            <input id="slope" placeholder="Slope">
+            <input id="ca" placeholder="CA">
+            <input id="thal" placeholder="Thal">
+        </div>
+
+        <button onclick="predict()">🔍 Predict Risk</button>
+    </div>
+
+    <!-- RESULT -->
+    <div id="result" class="result-card"></div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
