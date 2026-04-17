@@ -59,7 +59,7 @@ def load_dataset():
     conn.close()
 
 # Uncomment once
-# load_dataset()
+#load_dataset()
 
 # ---------------- GET PATIENTS ----------------
 @app.route('/patients')
@@ -108,3 +108,8 @@ def predict():
 # ---------------- RUN ----------------
 if __name__ == "__main__":
     app.run(debug=True)
+
+from tensorflow.keras.models import load_model
+
+dl_model = load_model("dl_model.h5")
+scaler = joblib.load("scaler.pkl")
